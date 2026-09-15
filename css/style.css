@@ -1,56 +1,78 @@
+/*style.css*/
+:root {
+    --button-color: #92f1b3;
+    --button-hover-color: #6edfa0;
+    --font-color: #333;
+    --font-family: Arial, sans-serif;
+}
+/*reinitialisation des marges et des paddings pour tous les éléments*/
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    
 }
-
-
-
+/*style du body*/
 body{
-    font-family: Arial, sans-serif;
+    font-family: var(--font-family);
     background-color: #f4f4f4;
+    width: 100%;
+    margin: 0;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     line-height: 1.6;
-    justify-content: center;
+    
    
 }
-
+/*style du header*/
 header {
     
     padding: 20px;
-    text-align: center;
     width: 100%;
     line-height: 2;
     margin-bottom: 20px;
 }
-
+/*style des titres du header*/
 header h1 {
-    font-size: 3.5em;
+    margin-left: 20px;
+    font-size: 2.5em;
     text-transform: uppercase;
 }
-
+/*style des sous-titres du header*/
 header h2 {
-    font-size: 2.5em;
+    font-size: 1.5em;
     text-transform: uppercase;
     text-align: center;
 }
-
+/*style du main*/
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+    padding: 20px;
+}
+/*style du formulaire*/
 main form{
     background-color: #fff;
     padding: 20px 30px;
     width: 100%;
-    max-width: 800px;
     margin: 20px 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
+/*style des labels et des inputs*/
 form label {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
     font-size: 1.2em;
 }
+/*  style des inputs et des selects*/
 input[type="text"],
 input[type="number"]{
     width: 100%;
@@ -60,23 +82,113 @@ input[type="number"]{
     border-radius: 4px;
 
 }
-select {
+/*style des inputs et des selects au focus*/
+input[type="text"]:focus,
+input[type="number"]:focus {
+    outline: none; 
+    border-color: var(--button-color);
+    box-shadow: 0 0 5px var(--button-color);
+}
+input[type="text"]::placeholder,
+input[type="number"]::placeholder{
+    font-weight: bold;
+}
+/*style des selects*/
+select{
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
-    margin-right: none;
     border: 1px solid #ccc;
     border-radius: 4px;
+   
 }
+select option {
+    font-weight: bold;
+}
+/*style des selects au focus*/
+select:focus {
+    outline: none; 
+    border-color: var(--button-color);
+    box-shadow: 0 0 5px var(--button-color);
+}
+/*  style du bouton submit*/
+
 button[type="submit"] {
-    background-color: #007BFF;
-    color: #fff;
+    background-color: var(--button-color);
+    color: whitesmoke;
     border: none;
-    width: fit-content;
+    width: 100%;
     padding: 10px 20px;
     cursor: pointer;
     font-size: 1em;
+    font-weight: bold;
     border-radius: 5px;
     transition: background-color 0.3s ease;
     margin-top: 30px;
 }
+/*  style du bouton submit au hover*/
+button[type="submit"]:hover {
+    background-color: var(--button-hover-color);
+}
+section {
+    display: inline;
+
+
+}
+
+input[type="search"] {
+    width: 100%;
+    max-width: 800px ;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 16px;
+}
+
+input[type="search"]::placeholder {
+    color: #999;
+    font-style: italic;
+}
+/*  style du bouton submit au focus*/
+input[type="search"]:focus {
+    outline: none;
+    border-color: var(--button-color);
+    box-shadow: 0 0 5px var(--button-color);
+}
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 1000px;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,td {
+    padding: 10px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.btn-modifier{
+    width: fit-content;
+    padding: 10px 20px;
+    background-color: rgb(30, 30, 237);
+    color: aliceblue;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+}
+.btn-supprimer{
+    width: fit-content;
+    padding: 10px 20px;
+    background-color: rgb(138, 8, 23);
+    color: aliceblue;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+
+ }
