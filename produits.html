@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Produits</title>
 </head>
 <body>
@@ -15,7 +16,7 @@
         <form id="produitForm">
             <!-- Champs du formulaire pour ajouter un produit -->
             <label for="nom">Nom du produit</label>
-            <input type="text" id="nom" name="nom" required> <br>
+            <input type="text" id="nom" name="nom" required placeholder="Ex: Laptop"> <br>
             
             <label for="categorie">Catégorie</label>
             <select id="categorie" name="categorie" required>
@@ -29,16 +30,16 @@
             </select> <br>
 
             <label for="prix_achat">Prix d'achat</label>
-            <input type="number" id="prix_achat" name="prix_achat" step="0.01" required> <br> <!-- step="0.01" permet d'accepter les décimales pour le prix d'achat -->
+            <input type="number" id="prix_achat" name="prix_achat" step="0.01" required placeholder="Ex: 1000.00"> <br> <!-- step="0.01" permet d'accepter les décimales pour le prix d'achat -->
 
             <label for="prix_vente">Prix de vente</label>
-            <input type="number" id="prix_vente" name="prix_vente" step="0.01" required > <br>
+            <input type="number" id="prix_vente" name="prix_vente" step="0.01" required placeholder="Ex: 1500.00"> <br>
 
             <label for="quantite">Quantité</label>
-            <input type="number" id="quantite" name="quantite" min="0" required > <br>
+            <input type="number" id="quantite" name="quantite" min="0" required placeholder="Ex: 10"> <br>
 
             <label for="stock">Stock minimum</label>
-            <input type="number" id="stock" name="stock" min="0" required> <br>
+            <input type="number" id="stock" name="stock" min="0" required placeholder="Ex: 5"> <br>
 
             <button type="submit">Ajouter le produit</button> <br>
 
@@ -69,17 +70,17 @@
             <tbody id="produitsTableBody">
                 <!-- Les produits seront ajoutés ici dynamiquement -->
                 <tr>
-                    <td>1</td>
-                    <td>Produit 1</td>
-                    <td>Électronique</td>
-                    <td>100.00</td>
-                    <td>150.00</td>
-                    <td>10</td>
-                    <td>5</td>
-                    <td>En stock</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td>    
-                        <button type="button" >Modifier </button>
-                        <button type="button" >Supprimer </button>
+                        <button type="update" >Modifier </button>
+                        <button type="delete" >Supprimer </button>
                     </td>
                 </tr>
             </tbody>
