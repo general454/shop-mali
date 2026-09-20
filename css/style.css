@@ -1,7 +1,8 @@
 /*style.css*/
 :root {
-    --button-color: #92f1b3;
-    --button-hover-color: #6edfa0;
+    --button-color: #2fb872;
+    --button-hover-color: #279d61;
+    --accent-light: #92f1b3;
     --font-color: #333;
     --font-family: Arial, sans-serif;
 }
@@ -10,7 +11,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
 }
 /*style du body*/
 body{
@@ -23,12 +23,10 @@ body{
     flex-direction: column;
     align-items: center;
     line-height: 1.6;
-    
-   
+    color: var(--font-color);
 }
 /*style du header*/
 header {
-    
     padding: 20px;
     width: 100%;
     line-height: 2;
@@ -64,8 +62,16 @@ main form{
     margin: 20px 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
 }
-/*style des labels et des inputs*/
+/* chaque paire label + input */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+/*style des labels*/
 form label {
     display: block;
     margin-bottom: 10px;
@@ -80,18 +86,18 @@ input[type="number"]{
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
-
 }
 /*style des inputs et des selects au focus*/
 input[type="text"]:focus,
 input[type="number"]:focus {
-    outline: none; 
+    outline: none;
     border-color: var(--button-color);
-    box-shadow: 0 0 5px var(--button-color);
+    box-shadow: 0 0 5px var(--accent-light);
 }
 input[type="text"]::placeholder,
 input[type="number"]::placeholder{
-    font-weight: bold;
+    font-weight: normal;
+    color: #999;
 }
 /*style des selects*/
 select{
@@ -100,45 +106,80 @@ select{
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
-   
+    background-color: #fff;
+    /* flèche custom pour un rendu uniforme entre navigateurs */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 36px;
 }
 select option {
-    font-weight: bold;
+    font-weight: normal;
 }
 /*style des selects au focus*/
 select:focus {
-    outline: none; 
+    outline: none;
     border-color: var(--button-color);
-    box-shadow: 0 0 5px var(--button-color);
+    box-shadow: 0 0 5px var(--accent-light);
+}
+/* conteneur des boutons submit + annuler */
+.form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
 }
 /*  style du bouton submit*/
-
 button[type="submit"] {
     background-color: var(--button-color);
-    color: whitesmoke;
+    color: #fff;
     border: none;
-    width: 100%;
+    flex: 1;
     padding: 10px 20px;
     cursor: pointer;
     font-size: 1em;
     font-weight: bold;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    margin-top: 30px;
 }
 /*  style du bouton submit au hover*/
 button[type="submit"]:hover {
     background-color: var(--button-hover-color);
 }
-section {
-    display: inline;
+/* style du bouton annuler (secondaire) */
+.btn-annuler {
+    background-color: #fff;
+    color: var(--font-color);
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+.btn-annuler:hover {
+    background-color: #f0f0f0;
+}
 
-
+.recherche-section {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.recherche-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 input[type="search"] {
     width: 100%;
-    max-width: 800px ;
+    max-width: 800px;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -149,46 +190,82 @@ input[type="search"]::placeholder {
     color: #999;
     font-style: italic;
 }
-/*  style du bouton submit au focus*/
+/*  style du champ recherche au focus*/
 input[type="search"]:focus {
     outline: none;
     border-color: var(--button-color);
-    box-shadow: 0 0 5px var(--button-color);
+    box-shadow: 0 0 5px var(--accent-light);
 }
 .table-container {
     width: 100%;
     overflow-x: auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 table {
     width: 100%;
-    min-width: 1000px;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 0;
 }
 
 th,td {
     padding: 10px 15px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    white-space: nowrap;
+}
+
+/* badges de statut */
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    font-weight: bold;
+    white-space: nowrap;
+}
+.badge-instock { background: #d4f7e0; color: #1e7e42; }
+.badge-low { background: #fff3cd; color: #997404; }
+.badge-out { background: #f8d7da; color: #a92434; }
+
+.actions-cell {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-modifier,
+.btn-supprimer {
+    width: fit-content;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.1s ease;
+}
+.btn-modifier:hover,
+.btn-supprimer:hover {
+    opacity: 0.85;
+}
+.btn-modifier:active,
+.btn-supprimer:active {
+    transform: scale(0.97);
 }
 
 .btn-modifier{
-    width: fit-content;
-    padding: 10px 20px;
     background-color: rgb(30, 30, 237);
     color: aliceblue;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
 }
 .btn-supprimer{
-    width: fit-content;
-    padding: 10px 20px;
     background-color: rgb(138, 8, 23);
     color: aliceblue;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
+}
 
- }
+/* responsive : formulaire en 1 colonne sur petit écran */
+@media (max-width: 640px) {
+    main form {
+        grid-template-columns: 1fr;
+    }
+}
