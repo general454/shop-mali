@@ -43,9 +43,28 @@ function annulerModification() {
 }
 
 btnAnnuler.addEventListener("click", annulerModification);
+let produits;
+const produitStockes =  localStorage.getItem("produits")
 
+if(produitStockes !== null ) {  
+       produits = JSON.parse(produitStockes)
+    }else {
+        produits = []
+    }
 formulaire.addEventListener("submit", function(event) {
     event.preventDefault();
+
+    const produit = {
+    id: prochainId,
+    nom: nom.value,
+    categorie: categorie.value,
+    prixAchat: Number(prixAchat.value),
+    prixVente: Number(prixVente.value),
+    quantite: quantite.value,
+    stockMinimum: stockMinimum.value
+};
+    produits.push(produit)
+    localStorage.setItem("produits", JSON.stringify(produits));
 
     const tabo = document.getElementById("produitsTableBody");
     let ligne;
