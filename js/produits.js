@@ -51,8 +51,82 @@ if(produitStockes !== null ) {
     }else {
         produits = []
     }
+prochainId = produits.length + 1;
+
+
+
+function afficherProduit(produit) {
+   
+        const tabo = document.getElementById("produitsTableBody");
+       const ligne = document.createElement("tr");
+
+        const cellule1 = document.createElement("td");
+        cellule1.textContent = produit.id;
+        ligne.dataset.id = produit.id;
+
+        const cellule2 = document.createElement("td");
+        cellule2.textContent = produit.nom;
+
+        const cellule3 = document.createElement("td");
+        cellule3.textContent = produit.categorie;
+
+        const cellule4 = document.createElement("td");
+        cellule4.textContent = produit.prixAchat;
+
+        const cellule5 = document.createElement("td");
+        cellule5.textContent = produit.prixVente;
+
+        const cellule6 = document.createElement("td");
+        cellule6.textContent = produit.quantite;
+
+        const cellule7 = document.createElement("td");
+        cellule7.textContent = produit.stockMinimum;
+
+        const cellule8 = document.createElement("td");
+        cellule8.appendChild(creerBadgeStatut(produit.quantite, produit.stockMinimum));
+
+        const cellule9 = document.createElement("td");
+        cellule9.classList.add("actions-cell");
+
+        // Creation du bouton modifier
+        const btnModifier = document.createElement("button");
+        btnModifier.textContent = "Modifier";
+        btnModifier.classList.add("btn-modifier");
+        btnModifier.setAttribute("aria-label", "Modifier " + produit.nom);
+
+        // Creation du bouton supprimer
+        const btnSupprimer = document.createElement("button");
+        btnSupprimer.textContent = "Supprimer";
+        btnSupprimer.classList.add("btn-supprimer");
+        btnSupprimer.setAttribute("aria-label", "Supprimer " + produit.nom);
+
+        cellule9.appendChild(btnModifier);
+        cellule9.appendChild(btnSupprimer);
+
+        ligne.appendChild(cellule1)
+        ligne.appendChild(cellule2)
+        ligne.appendChild(cellule3)
+        ligne.appendChild(cellule4)
+        ligne.appendChild(cellule5)
+        ligne.appendChild(cellule6)
+        ligne.appendChild(cellule7)
+        ligne.appendChild(cellule8)
+        ligne.appendChild(cellule9)
+
+        tabo.appendChild(ligne)
+        
+    }
+for(let i = 0; i < produits.length; i++) {
+    afficherProduit(produits[i])
+}
+
+
+
+
 formulaire.addEventListener("submit", function(event) {
     event.preventDefault();
+
+   
 
     const produit = {
     id: prochainId,
